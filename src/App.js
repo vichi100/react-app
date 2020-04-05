@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+// import "../src/less/react-checkbox-tree.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux";
+import { updateUser } from "./action/user-action";
+import Demo from "./demo";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.onUpdateUser = this.onUpdateUser.bind(this);
+  }
+
+  onUpdateUser() {
+    this.props.onUpdateUser("sammy");
+  }
+  render() {
+    console.log(this.props);
+    return (
+      <div className="App">
+        {/* <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className="App-link"
+            href="https://reactjs.org"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn React vichi
+          </a>
+        </header> */}
+        <div>
+          <Demo />
+        </div>
+        {/* <div onClick={this.onUpdateUser}> update user</div>
+        {this.props.user} */}
+        {/* {this.props.vichi} */}
+      </div>
+    );
+  }
 }
+const mapStateToProps = state => ({
+  products: state.products,
+  user: state.user,
+  vichi: state.user
+});
 
-export default App;
+const mapActionToProps = {
+  onUpdateUser: updateUser
+};
+
+export default connect(
+  mapStateToProps,
+  mapActionToProps
+)(App);

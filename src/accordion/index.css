@@ -1,0 +1,60 @@
+.accordion {
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+}
+.accordion .accordion-item:first-child .header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.accordion .accordion-item:last-child .header {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.accordion .accordion-item .header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f6f6f6;
+  color: #444;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+.accordion .accordion-item .header .title {
+  justify-content: left;
+}
+
+.accordion .accordion-item .header .subtitle {
+  text-align: right;
+}
+.accordion .accordion-item .header:after {
+  /* Unicode character for "plus" sign (+) */
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+.accordion .accordion-item .panel {
+  display: flex;
+  justify-items: left;
+  max-height: 0;
+  transition: max-height 0.15s ease-out;
+  overflow: hidden;
+}
+.accordion .accordion-item.active .header {
+  display: flex;
+  background-color: #eeeeee;
+}
+.accordion .accordion-item.active .header:after {
+  float: right;
+  /* Unicode character for "minus" sign (-) */
+}
+.accordion .accordion-item.active .panel {
+  display: flex;
+  justify-items: left;
+  max-height: 500px;
+  transition: max-height 0.25s ease-in;
+}
