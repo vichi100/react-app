@@ -3,9 +3,12 @@ import CheckboxTree from "../src/tree/CheckboxTree";
 import "./less/react-checkbox-tree.css";
 import Accordion from "./accordion/Accordion";
 import AccordionItem from "./accordion/AccordionItem";
+import CheckBoxList from "../src/checkbox/CheckBoxList";
 import "../src/accordion/index.css";
+// import ReactRadioGroup from "react-simple-radio-button";
+import ReactRadioGroup from "../src/radio-button/ReactSimpleRadioButton";
 
-import "./demo.css";
+// import "./demo.css";
 // import "./less/checkbox.css";
 
 // const nodes = [
@@ -126,15 +129,39 @@ export default class Demo extends React.Component {
       expanded: ["/app"],
       filterText: "",
       nodesFiltered: nodes,
-      nodes
+      nodes,
+      checkList: [
+        {
+          name: "city",
+          value: "bangalore",
+          checked: false
+        },
+        {
+          name: "city",
+          value: "chennai",
+          checked: false
+        },
+        {
+          name: "city",
+          value: "delhi",
+          checked: false
+        }
+      ]
     };
-
-    this.onCheck = this.onCheck.bind(this);
-    this.onExpand = this.onExpand.bind(this);
-    this.onFilterChange = this.onFilterChange.bind(this);
-    this.filterTree = this.filterTree.bind(this);
-    this.filterNodes = this.filterNodes.bind(this);
   }
+
+  onClickButton = event => {
+    console.log("key: ", event.target.value);
+    let value = event.target.value;
+    // if (value.toLowerCase() === "all") {
+    //   value = "All +";
+    //   this.setState({ subTitile: value });
+    // } else {
+    //   value = value + " - ";
+    //   this.setState({ subTitile: value });
+    // }
+    this.setState({ subTitle: value });
+  };
 
   toggleActive = index => {
     const position = this.state.activeClickedItems.indexOf(index);
@@ -154,15 +181,45 @@ export default class Demo extends React.Component {
     this.setState({ checked });
   };
 
-  onExpand(expanded) {
+  onExpand = expanded => {
     this.setState({ expanded });
-  }
+  };
 
-  onFilterChange(e) {
+  onCheckBoxChange = (checkName, isChecked) => {
+    console.log("key: ", isChecked);
+    let isAllChecked = checkName === "all" && isChecked;
+    let isAllUnChecked = checkName === "all" && !isChecked;
+    const checked = isChecked;
+
+    const checkList = this.state.checkList.map((city, index) => {
+      if (isAllChecked || city.value === checkName) {
+        return Object.assign({}, city, {
+          checked
+        });
+      } else if (isAllUnChecked) {
+        return Object.assign({}, city, {
+          checked: false
+        });
+      }
+
+      return city;
+    });
+
+    let isAllSelected =
+      checkList.findIndex(item => item.checked === false) === -1 ||
+      isAllChecked;
+
+    this.setState({
+      checkList,
+      isAllSelected
+    });
+  };
+
+  onFilterChange = e => {
     this.setState({ filterText: e.target.value }, this.filterTree);
-  }
+  };
 
-  filterTree() {
+  filterTree = () => {
     // Reset nodes back to unfiltered state
     if (!this.state.filterText) {
       this.setState(prevState => ({
@@ -177,9 +234,9 @@ export default class Demo extends React.Component {
     });
 
     this.setState(nodesFiltered);
-  }
+  };
 
-  filterNodes(filtered, node) {
+  filterNodes = (filtered, node) => {
     const { filterText } = this.state;
     const children = (node.children || []).reduce(this.filterNodes, []);
 
@@ -194,7 +251,7 @@ export default class Demo extends React.Component {
     }
 
     return filtered;
-  }
+  };
 
   render() {
     const { checked, expanded, filterText, nodesFiltered } = this.state;
@@ -223,6 +280,23 @@ export default class Demo extends React.Component {
             </div>
           </AccordionItem>
         </Accordion>
+
+        <Accordion atomic={true}>
+          <AccordionItem title="Title x" subTitle={this.state.subTitle}>
+            <div>
+              <CheckBoxList
+                options={this.state.checkList}
+                onClickButton={this.onClickButton}
+                onCheck={this.onCheckBoxChange}
+              />
+            </div>
+          </AccordionItem>
+        </Accordion>
+        <ReactRadioGroup
+          defaultSelected="Option 3"
+          onChange={this.onOptionSelect}
+          options={["Option 1", "Option 2", "Option 3", "Option 4"]}
+        />
       </div>
     );
   }

@@ -7,8 +7,6 @@ import NativeCheckbox from "./NativeCheckbox";
 class TreeNode extends React.Component {
   static propTypes = {
     checked: PropTypes.number.isRequired,
-    disabled: PropTypes.bool.isRequired,
-    expandDisabled: PropTypes.bool.isRequired,
     expanded: PropTypes.bool.isRequired,
     isLeaf: PropTypes.bool.isRequired,
     isParent: PropTypes.bool.isRequired,
