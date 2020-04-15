@@ -7,94 +7,62 @@ import CheckBoxList from "../src/checkbox/CheckBoxList";
 import "../src/accordion/index.css";
 // import ReactRadioGroup from "react-simple-radio-button";
 import ReactRadioGroup from "../src/radio-button/ReactSimpleRadioButton";
+import Card from "../src/card/Card";
+import Title from "../src/card/Title";
 
-// import "./demo.css";
-// import "./less/checkbox.css";
+import "../src/card/card.css";
 
-// const nodes = [
-//   {
-//     value: "/app",
-//     label: "app",
-//     children: [
-//       {
-//         value: "Http",
-//         label: "Http",
-//         children: [
-//           {
-//             value: "Controllers",
-//             label: "Controllers",
-//             children: [
-//               {
-//                 value: "WelcomeController.js",
-//                 label: "WelcomeController.js"
-//               }
-//             ]
-//           },
-//           {
-//             value: "routes.js",
-//             label: "routes.js"
-//           }
-//         ]
-//       },
-//       {
-//         value: "Providers",
-//         label: "Providers",
-//         children: [
-//           {
-//             value: "EventServiceProvider.js",
-//             label: "EventServiceProvider.js"
-//           }
-//         ]
-//       }
-//     ]
-//   },
-//   {
-//     value: "config",
-//     label: "config",
-//     children: [
-//       {
-//         value: "app.js",
-//         label: "app.js"
-//       },
-//       {
-//         value: "database.js",
-//         label: "database.js"
-//       }
-//     ]
-//   },
-//   {
-//     value: "public",
-//     label: "public",
-//     children: [
-//       {
-//         value: "/public/assets/",
-//         label: "assets",
-//         children: [
-//           {
-//             value: "/public/assets/style.css",
-//             label: "style.css"
-//           }
-//         ]
-//       },
-//       {
-//         value: "/public/index.html",
-//         label: "index.html"
-//       }
-//     ]
-//   },
-//   {
-//     value: "/.env",
-//     label: ".env"
-//   },
-//   {
-//     value: "/.gitignore",
-//     label: ".gitignore"
-//   },
-//   {
-//     value: "/README.md",
-//     label: "README.md"
-//   }
-// ];
+const PostsData = [
+  {
+    category: "News",
+    title: "CNN Acquire BEME 1",
+    text: "CNN purchased Casey Neistat's Beme app for $25million.",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/erondu/600x400"
+  },
+  {
+    category: "Travel",
+    title: "Nomad Lifestyle 2",
+    text: "Learn our tips and tricks on living a nomadic lifestyle",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/_vickyreyes/600x400"
+  },
+  {
+    category: "Development",
+    title: "React and the WP-API 3",
+    text: "The first ever decoupled starter theme for React & the WP-API",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/ilyapavlov/600x400"
+  },
+  {
+    category: "News",
+    title: "CNN Acquire BEME 4",
+    text: "CNN purchased Casey Neistat's Beme app for $25million.",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/erondu/600x400"
+  },
+  {
+    category: "Travel",
+    title: "Nomad Lifestyle 5",
+    text: "Learn our tips and tricks on living a nomadic lifestyle",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/_vickyreyes/600x400"
+  },
+  {
+    category: "Development",
+    title: "React and the WP-API 6",
+    text: "The first ever decoupled starter theme for React & the WP-API",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/ilyapavlov/600x400"
+  },
+  {
+    category: "Development",
+    title: "React and the WP-API 7",
+    text: "The first ever decoupled starter theme for React & the WP-API",
+    date: "15 Apr 2020",
+    image: "https://source.unsplash.com/user/ilyapavlov/600x400"
+  }
+];
 
 const nodes = [
   {
@@ -253,53 +221,100 @@ export default class Demo extends React.Component {
     return filtered;
   };
 
+  onOptionSelect = value => {
+    console.log(value);
+  };
+
+  display = PostsData => {
+    let indents = [];
+    for (var i = 0; i < PostsData.length; i++) {
+      if (PostsData.length - i >= 2) {
+        indents.push(
+          <div>
+            <Card key={i} index={i} details={PostsData[i]} />
+            <Card key={i + 1} index={i + 1} details={PostsData[i + 1]} />
+          </div>
+        );
+      } else {
+        indents.push(
+          <div>
+            <Card key={i} index={i} details={PostsData[i]} />
+          </div>
+        );
+      }
+
+      i = i + 1;
+    }
+
+    return indents;
+  };
+
   render() {
-    const { checked, expanded, filterText, nodesFiltered } = this.state;
-
     return (
-      <div className="filter-container">
-        <Accordion atomic={true}>
-          <AccordionItem title="Title x" subTitle={this.state.subTitle}>
+      <div>
+        <div className="app-card-list" id="app-card-list">
+          {this.display(PostsData)}
+          {/* {Object.keys(PostsData).map(key => (
+            
             <div>
-              <input
-                className="filter-text"
-                placeholder="Search..."
-                type="text"
-                value={filterText}
-                onChange={this.onFilterChange}
-              />
-              <CheckboxTree
-                checked={checked}
-                expanded={expanded}
-                iconsClass="fa5"
-                nativeCheckboxes={true}
-                nodes={nodesFiltered}
-                onCheck={this.onCheck}
-                onExpand={this.onExpand}
-              />
+              <Card key={key} index={key} details={PostsData[key]} />
+              <Card key={key} index={key} details={PostsData[key]} />
             </div>
-          </AccordionItem>
-        </Accordion>
-
-        <Accordion atomic={true}>
-          <AccordionItem title="Title x" subTitle={this.state.subTitle}>
-            <div>
-              <CheckBoxList
-                options={this.state.checkList}
-                onClickButton={this.onClickButton}
-                onCheck={this.onCheckBoxChange}
-              />
-            </div>
-          </AccordionItem>
-        </Accordion>
-        <ReactRadioGroup
-          defaultSelected="Option 3"
-          onChange={this.onOptionSelect}
-          options={["Option 1", "Option 2", "Option 3", "Option 4"]}
-        />
+          ) 
+          )
+          } */}
+        </div>
       </div>
     );
   }
+
+  // render() {
+  //   const { checked, expanded, filterText, nodesFiltered } = this.state;
+
+  //   return (
+  //     <div className="filter-container">
+  //       <Accordion atomic={true}>
+  //         <AccordionItem title="Title x" subTitle={this.state.subTitle}>
+  //           <div>
+  //             <input
+  //               className="filter-text"
+  //               placeholder="Search..."
+  //               type="text"
+  //               value={filterText}
+  //               onChange={this.onFilterChange}
+  //             />
+  //             <CheckboxTree
+  //               checked={checked}
+  //               expanded={expanded}
+  //               iconsClass="fa5"
+  //               nativeCheckboxes={true}
+  //               nodes={nodesFiltered}
+  //               onCheck={this.onCheck}
+  //               onExpand={this.onExpand}
+  //             />
+  //           </div>
+  //         </AccordionItem>
+  //       </Accordion>
+
+  //       <Accordion atomic={true}>
+  //         <AccordionItem title="Title x" subTitle={this.state.subTitle}>
+  //           <div>
+  //             <CheckBoxList
+  //               options={this.state.checkList}
+  //               onClickButton={this.onClickButton}
+  //               onCheck={this.onCheckBoxChange}
+  //             />
+  //           </div>
+  //         </AccordionItem>
+  //       </Accordion>
+  //       <ReactRadioGroup
+  //         defaultSelected="Option 3"
+  //         onChange={this.onOptionSelect}
+  //         options={["Option 1", "Option 2", "Option 3", "Option 4"]}
+  //       />
+  //     </div>
+  //   );
+  // }
 }
 
 // ReactDOM.render(<Demo />, document.getElementById('demo'));
