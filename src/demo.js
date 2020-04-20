@@ -12,6 +12,8 @@ import Title from "../src/card/Title";
 
 import "../src/card/card.css";
 
+import Modal from "../src/modal/Modal";
+
 const PostsData = [
   {
     category: "News",
@@ -88,6 +90,7 @@ export default class Demo extends React.Component {
     super(props);
     this.state = {
       isReadMore: false,
+      isShowing: false,
       activeClickedItems: [0],
       activeHoveredItems: [0],
       isAllSelected: false,
@@ -122,6 +125,18 @@ export default class Demo extends React.Component {
       ]
     };
   }
+
+  openModalHandler = () => {
+    this.setState({
+      isShowing: true
+    });
+  };
+
+  closeModalHandler = () => {
+    this.setState({
+      isShowing: false
+    });
+  };
 
   onClickButton = event => {
     console.log("key: ", event.target.value);
@@ -256,18 +271,30 @@ export default class Demo extends React.Component {
 
   render() {
     return (
+      // <div>
+      //   {this.state.isShowing ? (
+      //     <div onClick={this.closeModalHandler} className="back-shed"></div>
+      //   ) : null}
+
+      //   <button className="open-modal-btn" onClick={this.openModalHandler}>
+      //     Open Modal
+      //   </button>
+
+      //   <Modal
+      //     className="modal"
+      //     show={this.state.isShowing}
+      //     close={this.closeModalHandler}
+      //   ></Modal>
+      // </div>
       <div>
         <div className="app-card-list" id="app-card-list">
           {this.display(PostsData)}
-          {/* {Object.keys(PostsData).map(key => (
-            
+          {Object.keys(PostsData).map(key => (
             <div>
               <Card key={key} index={key} details={PostsData[key]} />
               <Card key={key} index={key} details={PostsData[key]} />
             </div>
-          ) 
-          )
-          } */}
+          ))}
         </div>
       </div>
     );

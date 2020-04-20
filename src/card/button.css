@@ -1,0 +1,19 @@
+.button-style {
+  height: 30px;
+  width: 90px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: rgba(255, 255, 255, 0.05) 0px 3px 20px;
+  border-width: 0.5px;
+  background-color: rgb(255, 255, 255);
+  color: rgb(1, 189, 247);
+  border-style: solid;
+  border-color: #00aef8;
+  border-image: initial;
+  outline: none;
+}
+
+.button-style .hover {
+  background-color: #445b65;
+}

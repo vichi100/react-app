@@ -7,7 +7,6 @@ function Modal({ handleClose, show, children }) {
   return (
     <div className={showHideClassName}>
       <div className="modal-main">{children}</div>
-      <a class="cancel" href="#_"></a>
       <div className="modal-close" onClick={handleClose}>
         close
       </div>
