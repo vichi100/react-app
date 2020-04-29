@@ -34,9 +34,8 @@ class App extends Component {
             Learn React vichi
           </a>
         </header> */}
-        <div>
-          <Demo />
-        </div>
+
+        <Demo />
         {/* <div onClick={this.onUpdateUser}> update user</div>
         {this.props.user} */}
         {/* {this.props.vichi} */}

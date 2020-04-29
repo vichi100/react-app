@@ -250,7 +250,7 @@ export default class Demo extends React.Component {
     for (var i = 0; i < PostsData.length; i++) {
       if (PostsData.length - i >= 2) {
         indents.push(
-          <div className="card-list-display">
+          <div>
             <Card key={i} index={i} details={PostsData[i]} />
             <Card key={i + 1} index={i + 1} details={PostsData[i + 1]} />
           </div>
@@ -286,9 +286,26 @@ export default class Demo extends React.Component {
       //     close={this.closeModalHandler}
       //   ></Modal>
       // </div>
+      // <div>
+      //   <div className="app-card-list" id="app-card-list">
+      //     {/* {this.display(PostsData)} */}
+      //     {Object.keys(PostsData).map(key => (
+      //       <div>
+      //         <Card key={key} index={key} details={PostsData[key]} />
+      //         <Card key={key} index={key} details={PostsData[key]} />
+      //       </div>
+      //     ))}
+      //   </div>
+      // </div>
 
-      <div className="app-card-list" id="app-card-list">
-        {this.display(PostsData)}
+      <div>
+        <div>
+          {PostsData.map((item, index) => (
+            <div key={index} item={item}>
+              {item.title}
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

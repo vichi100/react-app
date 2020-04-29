@@ -4,11 +4,15 @@ import ReadMoreReact from "read-more-react";
 import ReadMore from "./ReadMore";
 import Modal from "./Modal";
 import { findByLabelText } from "@testing-library/dom";
+import classNames from "classnames";
 
 const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 export default class CardBody extends React.Component {
-  state = { showUpdate: false };
+  constructor(props) {
+    super(props);
+    this.state = { isOpen: false, showUpdate: false };
+  }
   //   componentDidMount() {
   //     console.log(
   //       "mounted width - ",
@@ -35,29 +39,34 @@ export default class CardBody extends React.Component {
     this.setState({ showUpdate: false });
   };
 
+  onClick = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+    // this.setSubTitle();
+  };
+
   render() {
+    const accordionItemClassNames = classNames([
+      "card-body",
+      {
+        active: this.state.isOpen
+      }
+    ]);
     return (
-      <div className="card-body" onBlur={() => this.setState({ show: false })}>
+      <div
+        className={accordionItemClassNames}
+        onBlur={() => this.setState({ show: false })}
+      >
         <div className="card-title">{this.props.title}</div>
 
         <div className="body-content-wrapper">
           <div className="body-content">{this.props.text}</div>
-          <div className="view-details" onClick={this.showUpdateModal}>
-            See full details
+          {this.state.isOpen ? (
+            <div className="more-content">{this.props.text}</div>
+          ) : null}
+          <div className="view-details" onClick={this.onClick}>
+            {this.state.isOpen ? "Hide details" : "See full details"}
           </div>
         </div>
-
-        {/* <ReadMoreReact text={this.props.text} /> */}
-
-        {/* <div ref={node => (this.wrapper = node)}>
-          <ReadMore
-            text={this.props.text}
-            umberOfLines={4}
-            lineHeight={1.4}
-            showLessButton={true}
-            onContentChange={this.getWrapperWidth}
-          />
-        </div> */}
 
         <div className="card-button">
           <button className="btn-display-search-result">View result</button>

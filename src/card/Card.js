@@ -5,13 +5,11 @@ import CardBody from "./CardBody";
 export default class Card extends React.Component {
   render() {
     return (
-      <div className="card">
-        <CardBody
-          title={this.props.details.title}
-          text={this.props.details.text}
-          date={this.props.details.date}
-        />
-      </div>
+      <CardBody
+        title={this.props.details.title}
+        text={this.props.details.text}
+        date={this.props.details.date}
+      />
     );
   }
 }
