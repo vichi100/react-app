@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class CardHeader extends React.Component {
-  render() {
-    const { image, category } = this.props;
+const CardHeader = props => {
+  console.log("header props: ", props);
+  return (
+    <header className="card-header">
+      <h4 className="card-header--title">{props.children}</h4>
+    </header>
+  );
+};
 
-    return (
-      <header className="card-header">
-        <h4 className="card-header--title">{category}</h4>
-      </header>
-    );
-  }
-}
+export default CardHeader;

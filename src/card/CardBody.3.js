@@ -22,27 +22,31 @@ export default class CardBody extends React.Component {
     this.setState({ showUpdate: false });
   };
 
-  viewDetails = () => {
-    this.props.viewDetails(!this.state.isOpen);
+  onClick = () => {
     this.setState({ isOpen: !this.state.isOpen });
     // this.setSubTitle();
   };
 
   render() {
-    // const accordionItemClassNames = classNames([
-    //   "card-body",
-    //   {
-    //     active: this.state.isOpen
-    //   }
-    // ]);
+    const accordionItemClassNames = classNames([
+      "card-body",
+      {
+        active: this.state.isOpen
+      }
+    ]);
     return (
-      <div className="card-body">
+      <div
+        className={accordionItemClassNames}
+        onBlur={() => this.setState({ show: false })}
+      >
+        <div className="card-title">{this.props.title}</div>
+
         <div className="body-content-wrapper">
-          <div className="body-content">{this.props.children.text}</div>
+          <div className="body-content">{this.props.text}</div>
           {this.state.isOpen ? (
-            <div className="more-content">{this.props.children.text}</div>
+            <div className="more-content">{this.props.text}</div>
           ) : null}
-          <div className="view-details" onClick={this.viewDetails}>
+          <div className="view-details" onClick={this.onClick}>
             {this.state.isOpen ? "Hide details" : "See full details"}
           </div>
         </div>
@@ -51,7 +55,17 @@ export default class CardBody extends React.Component {
           <button className="btn-display-search-result">View result</button>
           <button className="btn-delete-saved-search">Delete</button>
         </div>
-
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: "10px",
+            marginBottom: "10px"
+          }}
+        >
+          <div className="alert">Alert setting</div>
+          <div className="date">{this.props.date}</div>
+        </div>
         <Modal show={this.state.showUpdate} handleClose={this.hideUpdateModal}>
           <div className="modal-header">
             <h2>Update Search</h2>

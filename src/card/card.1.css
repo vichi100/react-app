@@ -43,9 +43,14 @@
 }
 
 .app-card-list .card-body.active {
+  white-space: normal;
+  border: 1px solid rgba(214, 213, 213, 0.322);
+  padding-left: 10px;
+  padding-right: 10px;
   float: left;
   height: 200px;
   overflow-y: scroll;
+  width: 74%;
 }
 
 .app-card-list .card-body .card-title {
@@ -194,10 +199,4 @@ textarea {
   border: 1px solid rgba(214, 213, 213, 0.322);
   padding-left: 10px;
   padding-right: 10px;
-}
-.card-content-container.active {
-  float: left;
-  height: 200px;
-  overflow-y: scroll;
-  width: 74%;
 }

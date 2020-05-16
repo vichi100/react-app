@@ -2,6 +2,9 @@ import React from "react";
 import "./MultiSearchSelect.css";
 import PropTypes from "prop-types";
 
+// https://github.com/vilvaathibanpb/react-search-multi-select/tree/master/src
+//https://codesandbox.io/s/react-search-multi-select-1wspz?file=/package.json
+
 class MultiSearchSelect extends React.Component {
   constructor(props) {
     super(props);
@@ -49,6 +52,7 @@ class MultiSearchSelect extends React.Component {
     });
   };
   addTag = element => {
+    console.log("vichi");
     let current = this.state.selected;
     if (this.state.selected.indexOf(element) === -1) {
       current.push(element);
@@ -138,12 +142,13 @@ class MultiSearchSelect extends React.Component {
                     <div className="tags" key={i}>
                       {e}
                       <div
+                        className="remove-tag"
                         onClick={e => {
                           e.preventDefault();
                           this.removeTag(i);
                         }}
                       >
-                        x
+                        | x
                       </div>
                     </div>
                   );
@@ -160,6 +165,7 @@ class MultiSearchSelect extends React.Component {
               }}
             >
               {this.props.options.map((e, i) => {
+                console.log("vichi", e);
                 if (
                   e.toLowerCase().indexOf(this.state.userInput.toLowerCase()) >
                   -1
@@ -195,8 +201,7 @@ MultiSearchSelect.propTypes = {
   options: PropTypes.array.isRequired,
   optionsContainerHeight: PropTypes.string,
   searchPlaceholder: PropTypes.string,
-  selected:
-    PropTypes.array /* Tags that phave to be selected on first render */,
+  selected: PropTypes.array,
   width: PropTypes.string,
   primaryColor: PropTypes.string,
   secondaryColor: PropTypes.string,
@@ -212,7 +217,7 @@ MultiSearchSelect.propTypes = {
 };
 
 MultiSearchSelect.defaultProps = {
-  // optionsContainerHeight: "50vh",
+  optionsContainerHeight: "300px",
   searchPlaceholder: "Search...",
   selected: [],
   className: "",
