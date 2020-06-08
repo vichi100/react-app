@@ -5,7 +5,7 @@ import "./App.css";
 
 import { connect } from "react-redux";
 import { updateUser } from "./action/user-action";
-import Demo from "./demo";
+import Demo from "./demo.8";
 
 class App extends Component {
   constructor(props) {

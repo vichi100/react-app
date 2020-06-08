@@ -12,8 +12,7 @@ import Title from "./card/Title";
 
 import "../src/card/card.css";
 
-import Modal from "./card/Modal";
-import TextDrillDownDemo from "./TextDrillDownDemo";
+import Modal from "./modal/Modal";
 
 const PostsData = [
   {
@@ -285,12 +284,80 @@ export default class Demo extends React.Component {
           <Modal
             className="modal"
             show={this.state.isShowing}
-            handleClose={this.closeModalHandler}
-          >
-            <TextDrillDownDemo />
-          </Modal>
+            close={this.closeModalHandler}
+          ></Modal>
+        </div>
+
+        <div className="app-card-list" id="app-card-list">
+          {/* {this.display(PostsData)} */}
+          {Object.keys(PostsData).map(key => (
+            <div>
+              <Card key={key} index={key} details={PostsData[key]} />
+              <Card key={key} index={key} details={PostsData[key]} />
+            </div>
+          ))}
         </div>
       </div>
+
+      // <div>
+      //   <div>
+      //     {PostsData.map((item, index) => (
+      //       <div key={index} item={item}>
+      //         {item.title}
+      //       </div>
+      //     ))}
+      //   </div>
+      // </div>
     );
   }
+
+  // render() {
+  //   const { checked, expanded, filterText, nodesFiltered } = this.state;
+
+  //   return (
+  //     <div className="filter-container">
+  //       <Accordion atomic={true}>
+  //         <AccordionItem title="Title x" subTitle={this.state.subTitle}>
+  //           <div>
+  //             <input
+  //               className="filter-text"
+  //               placeholder="Search..."
+  //               type="text"
+  //               value={filterText}
+  //               onChange={this.onFilterChange}
+  //             />
+  //             <CheckboxTree
+  //               checked={checked}
+  //               expanded={expanded}
+  //               iconsClass="fa5"
+  //               nativeCheckboxes={true}
+  //               nodes={nodesFiltered}
+  //               onCheck={this.onCheck}
+  //               onExpand={this.onExpand}
+  //             />
+  //           </div>
+  //         </AccordionItem>
+  //       </Accordion>
+
+  //       <Accordion atomic={true}>
+  //         <AccordionItem title="Title x" subTitle={this.state.subTitle}>
+  //           <div>
+  //             <CheckBoxList
+  //               options={this.state.checkList}
+  //               onClickButton={this.onClickButton}
+  //               onCheck={this.onCheckBoxChange}
+  //             />
+  //           </div>
+  //         </AccordionItem>
+  //       </Accordion>
+  //       <ReactRadioGroup
+  //         defaultSelected="Option 3"
+  //         onChange={this.onOptionSelect}
+  //         options={["Option 1", "Option 2", "Option 3", "Option 4"]}
+  //       />
+  //     </div>
+  //   );
+  // }
 }
+
+// ReactDOM.render(<Demo />, document.getElementById('demo'));
