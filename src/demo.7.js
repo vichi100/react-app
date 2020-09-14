@@ -14,62 +14,6 @@ import "../src/card/card.css";
 
 import Modal from "./modal/Modal";
 
-const PostsData = [
-  {
-    category: "News",
-    title: "CNN Acquire BEME 1",
-    text:
-      "Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat! Pede voluptatibus tristique adipiscing, eleifend vestibulum, dolore, eveniet facilis ipsa, deleniti sit repudiandae temporibus esse hic! Primis phasellus ut vestibulum pellentesque condimentum laboris sed? Molestie torquent, occaecati natoque, quisque nostra sunt, nibh, consequuntur turpis eros aut justo qui recusandae eos, soluta repellat ipsa tortor tempus ultrices dis, unde voluptates venenatis placeat praesent suscipit maxime, lacus eleifend? Iste nisi fermentum! Corporis accusamus dictum! Sapien laboris massa fugit deserunt laboriosam mi consectetur curabitur cum. Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat, Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum at ipsa torto Pede voluptatibus tristique adipiscing, eleifend vestibulum, dolore, eveniet facilis ipsa, deleniti sit repudiandae ",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/erondu/600x400"
-  },
-  {
-    category: "Travel",
-    title: "Nomad Lifestyle 2",
-    text:
-      "Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat! Pede voluptatibus tristique adipiscing, eleifend vestibulum, dolore, eveniet facilis ipsa, deleniti sit repudiandae temporibus esse hic! Primis phasellus ut vestibulum pellentesque condimentum laboris sed? Molestie torquent, occaecati natoque, quisque nostra sunt, nibh, consequuntur turpis eros aut justo qui recusandae eos, soluta repellat ipsa tortor tempus ultrices dis, unde voluptates venenatis placeat praesent suscipit maxime, lacus eleifend? Iste nisi fermentum! Corporis accusamus dictum! Sapien laboris massa fugit deserunt laboriosam mi consectetur curabitur cum. Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/_vickyreyes/600x400"
-  },
-  {
-    category: "Development",
-    title: "React and the WP-API 3",
-    text:
-      "Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat! Pede voluptatibus tristique adipiscing, eleifend vestibulum, dolore, eveniet facilis ipsa, deleniti sit repudiandae temporibus esse hic! Primis phasellus ut vestibulum pellentesque condimentum laboris sed? Molestie torquent, occaecati natoque, quisque nostra sunt, nibh, consequuntur turpis eros aut justo qui recusandae eos, soluta repellat ipsa tortor tempus ultrices dis, unde voluptates venenatis placeat praesent suscipit maxime, lacus eleifend? Iste nisi fermentum! Corporis accusamus dictum! Sapien laboris massa fugit deserunt laboriosam mi consectetur curabitur cum. Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/ilyapavlov/600x400"
-  },
-  {
-    category: "News",
-    title: "CNN Acquire BEME 4",
-    text: "",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/erondu/600x400"
-  },
-  {
-    category: "Travel",
-    title: "Nomad Lifestyle 5",
-    text: "Learn our tips and tricks on living a nomadic lifestyle",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/_vickyreyes/600x400"
-  },
-  {
-    category: "Development",
-    title: "React and the WP-API 6",
-    text: "The first ever decoupled starter theme for React & the WP-API",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/ilyapavlov/600x400"
-  },
-  {
-    category: "Development",
-    title: "React and the WP-API 7",
-    text:
-      "Er cras conubia cupidatat! Pede voluptatibus tristique adipiscing, eleifend vestibulum, dolore, eveniet facilis ipsa, deleniti sit repudiandae temporibus esse hic! Primis phasellus ut vestibulum pellentesque condimentum laboris sed? Molestie torquent, occaecati natoque, quisque nostra sunt, nibh, consequuntur turpis eros aut justo qui recusandae eos, soluta repellat ipsa tortor tempus ultrices dis, unde voluptates venenatis placeat praesent suscipit maxime, lacus eleifend? Iste nisi fermentum! Corporis accusamus dictum! Sapien laboris massa fugit deserunt laboriosam mi consectetur curabitur cum. Egestas mollitia quos metus natus assumenda ullam suscipit ultricies. Voluptas, nihil natoque elementum error ligula exercitationem aliquid tempor mauris penatibus. Suspendisse! Rutrum volutpat adipiscing nascetur cras conubia cupidatat",
-    date: "15 Apr 2020",
-    image: "https://source.unsplash.com/user/ilyapavlov/600x400"
-  }
-];
-
 const nodes = [
   {
     label: "big data",
@@ -105,24 +49,7 @@ export default class Demo extends React.Component {
       expanded: ["/app"],
       filterText: "",
       nodesFiltered: nodes,
-      nodes,
-      checkList: [
-        {
-          name: "city",
-          value: "bangalore",
-          checked: false
-        },
-        {
-          name: "city",
-          value: "chennai",
-          checked: false
-        },
-        {
-          name: "city",
-          value: "delhi",
-          checked: false
-        }
-      ]
+      nodes
     };
   }
 
@@ -245,119 +172,36 @@ export default class Demo extends React.Component {
     console.log(value);
   };
 
-  display = PostsData => {
-    let indents = [];
-    for (var i = 0; i < PostsData.length; i++) {
-      if (PostsData.length - i >= 2) {
-        indents.push(
-          <div>
-            <Card key={i} index={i} details={PostsData[i]} />
-            <Card key={i + 1} index={i + 1} details={PostsData[i + 1]} />
-          </div>
-        );
-      } else {
-        indents.push(
-          <div>
-            <Card key={i} index={i} details={PostsData[i]} />
-          </div>
-        );
-      }
-
-      i = i + 1;
-    }
-
-    return indents;
-  };
-
   render() {
+    const { checked, expanded, filterText, nodesFiltered } = this.state;
+
     return (
-      <div>
-        <div>
-          {this.state.isShowing ? (
-            <div onClick={this.closeModalHandler} className="back-shed"></div>
-          ) : null}
-
-          <button className="open-modal-btn" onClick={this.openModalHandler}>
-            Open Modal
-          </button>
-
-          <Modal
-            className="modal"
-            show={this.state.isShowing}
-            close={this.closeModalHandler}
-          ></Modal>
-        </div>
-
-        <div className="app-card-list" id="app-card-list">
-          {/* {this.display(PostsData)} */}
-          {Object.keys(PostsData).map(key => (
+      <div className="filter-container">
+        <Accordion atomic={true}>
+          <AccordionItem title="Title x" subTitle={this.state.subTitle}>
             <div>
-              <Card key={key} index={key} details={PostsData[key]} />
-              <Card key={key} index={key} details={PostsData[key]} />
+              <input
+                className="filter-text"
+                placeholder="Search..."
+                type="text"
+                value={filterText}
+                onChange={this.onFilterChange}
+              />
+              <CheckboxTree
+                checked={checked}
+                expanded={expanded}
+                iconsClass="fa5"
+                nativeCheckboxes={true}
+                nodes={nodesFiltered}
+                onCheck={this.onCheck}
+                onExpand={this.onExpand}
+              />
             </div>
-          ))}
-        </div>
+          </AccordionItem>
+        </Accordion>
       </div>
-
-      // <div>
-      //   <div>
-      //     {PostsData.map((item, index) => (
-      //       <div key={index} item={item}>
-      //         {item.title}
-      //       </div>
-      //     ))}
-      //   </div>
-      // </div>
     );
   }
-
-  // render() {
-  //   const { checked, expanded, filterText, nodesFiltered } = this.state;
-
-  //   return (
-  //     <div className="filter-container">
-  //       <Accordion atomic={true}>
-  //         <AccordionItem title="Title x" subTitle={this.state.subTitle}>
-  //           <div>
-  //             <input
-  //               className="filter-text"
-  //               placeholder="Search..."
-  //               type="text"
-  //               value={filterText}
-  //               onChange={this.onFilterChange}
-  //             />
-  //             <CheckboxTree
-  //               checked={checked}
-  //               expanded={expanded}
-  //               iconsClass="fa5"
-  //               nativeCheckboxes={true}
-  //               nodes={nodesFiltered}
-  //               onCheck={this.onCheck}
-  //               onExpand={this.onExpand}
-  //             />
-  //           </div>
-  //         </AccordionItem>
-  //       </Accordion>
-
-  //       <Accordion atomic={true}>
-  //         <AccordionItem title="Title x" subTitle={this.state.subTitle}>
-  //           <div>
-  //             <CheckBoxList
-  //               options={this.state.checkList}
-  //               onClickButton={this.onClickButton}
-  //               onCheck={this.onCheckBoxChange}
-  //             />
-  //           </div>
-  //         </AccordionItem>
-  //       </Accordion>
-  //       <ReactRadioGroup
-  //         defaultSelected="Option 3"
-  //         onChange={this.onOptionSelect}
-  //         options={["Option 1", "Option 2", "Option 3", "Option 4"]}
-  //       />
-  //     </div>
-  //   );
-  // }
 }
 
 // ReactDOM.render(<Demo />, document.getElementById('demo'));

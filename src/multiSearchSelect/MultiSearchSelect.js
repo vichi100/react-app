@@ -125,16 +125,7 @@ class MultiSearchSelect extends React.Component {
                 className="input-box"
               />
             )}
-            {this.props.multiSelect && (
-              <div className="action-button-container">
-                <button className="btn" onClick={this.selectAll}>
-                  Select All
-                </button>
-                <button className="btn" onClick={this.unselectAll}>
-                  Unselect All
-                </button>
-              </div>
-            )}
+
             {this.props.showTags && (
               <div className="tag-container" contentEditable={false}>
                 {this.state.selected.map((e, i) => {
@@ -144,7 +135,7 @@ class MultiSearchSelect extends React.Component {
                       <div
                         className="remove-tag"
                         onClick={e => {
-                          e.preventDefault();
+                          e.preventDefault(); 
                           this.removeTag(i);
                         }}
                       >

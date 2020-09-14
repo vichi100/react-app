@@ -19,7 +19,8 @@
     "react-simple-radio-button": "^1.0.14",
     "read-more-react": "^1.0.10",
     "redux-devtools-extension": "^2.13.8",
-    "styled-components": "^5.1.0"
+    "styled-components": "^5.1.0",
+    "xlsx": "^0.16.7"
   },
   "scripts": {
     "start": "react-scripts start",

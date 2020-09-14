@@ -30,9 +30,9 @@ export default class Tooltip extends React.Component {
             <div className="tooltip-message">{message}</div>
           </div>
         )}
-        <span className="tooltip-trigger" onMouseOver={this.showTooltip}>
+        <div className="tooltip-trigger" onMouseOver={this.showTooltip}>
           {this.props.children}
-        </span>
+        </div>
       </div>
     );
   }
