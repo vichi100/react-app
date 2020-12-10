@@ -42,6 +42,7 @@ class NodeModel {
       this.flatNodes[node.value] = {
         label: node.label,
         value: node.value,
+        checked: node.checked,
         children: node.children,
         parent,
         isChild: parent.value !== undefined,
@@ -61,13 +62,18 @@ class NodeModel {
 
   deserializeLists(lists) {
     const listKeys = ["checked", "expanded"];
-
-    // Reset values to false
+    // by vichi
     Object.keys(this.flatNodes).forEach(value => {
       listKeys.forEach(listKey => {
-        this.flatNodes[value][listKey] = false;
+        this.flatNodes[value][listKey] = this.flatNodes[value].checked;
       });
     });
+    // Reset values to false
+    // Object.keys(this.flatNodes).forEach(value => {
+    //   listKeys.forEach(listKey => {
+    //     this.flatNodes[value][listKey] = false;
+    //   });
+    // });
 
     // Deserialize values and set their nodes to true
     listKeys.forEach(listKey => {

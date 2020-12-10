@@ -6,6 +6,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import { updateUser } from "./action/user-action";
 // import Demo from "./demo.6";
+import Demo from "./demo.11";
 import ReadFile from "./ReadFile";
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
           </a>
         </header> */}
 
-        <ReadFile />
+        <Demo />
         {/* <div onClick={this.onUpdateUser}> update user</div>
         {this.props.user} */}
         {/* {this.props.vichi} */}

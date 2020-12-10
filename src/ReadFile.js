@@ -24,6 +24,12 @@ class ReadFile extends Component {
       <div onSubmit={this.onFormSubmit}>
         <h1>Upload File Here</h1>
         <input type="file" name="file" onChange={e => this.onChange(e)} />
+        <p>
+          <a href="TestFile/XLS_1000.xlsx" download>
+            {" "}
+            Click to Download{" "}
+          </a>
+        </p>
       </div>
     );
   }
