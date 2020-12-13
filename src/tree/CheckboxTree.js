@@ -123,10 +123,15 @@ class CheckboxTree extends React.Component {
     }
 
     if (this.isSomeChildChecked(node)) {
-      return 2;
+      // return 1; //2
+      return 2; //2
     }
 
-    return 0;
+    if (!flatNode.isLeaf) {
+      if (flatNode.checked) return 2;
+    }
+
+    return flatNode.checked ? 1 : 0;
   };
 
   isEveryChildChecked = node => {

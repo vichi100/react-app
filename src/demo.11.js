@@ -4,9 +4,9 @@ import "./less/react-checkbox-tree.css";
 import Accordion from "./accordion/Accordion";
 import AccordionItem from "./accordion/AccordionItem";
 import CheckBoxList from "./checkbox/CheckBoxList";
-import "../src/accordion/index.css";
+// import "../src/accordion/index.css";
 
-import "../src/card/card.css";
+// import "../src/card/card.css";
 
 const nodes = [
   {
@@ -19,15 +19,15 @@ const nodes = [
         value: "true x",
         checked: true,
         children: [
-          { label: "a", value: "a", checked: false },
-          { label: "b", value: "b", checked: false }
+          { label: "a", value: "a", checked: true },
+          { label: "b", value: "b", checked: true }
         ]
-      },
-      { label: "big data b", value: "y", checked: true },
-      { label: "big data c", value: "c", checked: true },
-      { label: "big data d", value: "p", checked: true },
-      { label: "big data e", value: "d", checked: true },
-      { label: "big data f", value: "s", checked: true }
+      }
+      // { label: "big data b", value: "y", checked: true },
+      // { label: "big data c", value: "c", checked: true },
+      // { label: "big data d", value: "d", checked: true },
+      // { label: "big data e", value: "e", checked: true },
+      // { label: "big data f", value: "f", checked: true }
     ]
   }
 ];
@@ -38,15 +38,15 @@ const nodes2 = [
     value: "big data",
     children: [
       {
-        label: "big data v ",
-        value: "x",
+        label: "data v ",
+        value: "data v",
         children: [{ label: "a", value: "a" }, { label: "b", value: "b" }]
-      },
-      { label: "big data b", value: "y" },
-      { label: "big data c", value: "c" },
-      { label: "big data d", value: "b" },
-      { label: "big data e", value: "d" },
-      { label: "big data f", value: "s" }
+      }
+      // { label: "big data b", value: "big data b" },
+      // { label: "big data c", value: "big data c" },
+      // { label: "big data d", value: "d" },
+      // { label: "big data e", value: "e" },
+      // { label: "big data f", value: "f" }
     ]
   }
 ];
@@ -61,14 +61,8 @@ export default class Demo extends React.Component {
       activeHoveredItems: [0],
       isAllSelected: false,
       subTitile: "",
-      checked: [
-        "/app/Http/Controllers/WelcomeController.js",
-        "/app/Http/routes.js",
-        "/public/assets/style.css",
-        "/public/index.html",
-        "/.gitignore"
-      ],
-      expanded: ["/app"],
+      checked: [],
+      expanded: [],
       filterText: "",
       nodesFiltered: nodes,
       nodes,
@@ -136,6 +130,7 @@ export default class Demo extends React.Component {
   };
 
   onExpand = expanded => {
+    console.log(expanded);
     this.setState({ expanded });
   };
 
@@ -255,7 +250,7 @@ export default class Demo extends React.Component {
                 expanded={expanded}
                 iconsClass="fa5"
                 nativeCheckboxes={true}
-                nodes={nodesFiltered}
+                nodes={nodes}
                 onCheck={this.onCheck}
                 onExpand={this.onExpand}
               />
