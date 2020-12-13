@@ -47,7 +47,8 @@ class NodeModel {
         isChild: parent.value !== undefined,
         isParent,
         isLeaf: !isParent,
-
+        checked: node.checked,
+        expanded: false,
         treeDepth: depth,
         index
       };
@@ -60,13 +61,28 @@ class NodeModel {
     return node.children.length > 0;
   }
 
-  deserializeLists(lists) {
+  deserializeLists(flatNodeParam) {
+    const myNode = flatNodeParam || this.flatNodes;
+    const listKeys = ["checked", "expanded"];
+
+    // Reset values to false
+
+    Object.keys(this.flatNodes).forEach(value => {
+      this.flatNodes[value]["checked"] = myNode[value].checked;
+    });
+
+    Object.keys(this.flatNodes).forEach(value => {
+      this.flatNodes[value]["expanded"] = myNode[value].expanded;
+    });
+  }
+
+  deserializeListsX(lists) {
     const listKeys = ["checked", "expanded"];
 
     // Reset values to false
     Object.keys(this.flatNodes).forEach(value => {
       listKeys.forEach(listKey => {
-        this.flatNodes[value][listKey] = false;
+        this.flatNodes[value][listKey] = this.flatNodes[value].checked;
       });
     });
 
