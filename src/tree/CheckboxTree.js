@@ -1,6 +1,7 @@
 import classNames from "classnames";
-import isEqual from "lodash/isEqual";
-import { nanoid } from "nanoid";
+// import isEqual from "lodash/isEqual";
+// import { nanoid } from "nanoid";
+import uuid from "react-uuid";
 import PropTypes from "prop-types";
 import React from "react";
 
@@ -60,7 +61,7 @@ class CheckboxTree extends React.Component {
     });
 
     this.state = {
-      id: props.id || `rct-${nanoid(7)}`,
+      id: props.id || `rct-${uuid().toString()}`,
       model,
       prevProps: props
     };
@@ -77,9 +78,10 @@ class CheckboxTree extends React.Component {
     model.setProps(newProps);
 
     // Since flattening nodes is an expensive task, only update when there is a node change
-    if (!isEqual(prevProps.nodes, nodes) || prevProps.disabled !== disabled) {
-      model.flattenNodes(nodes);
-    }
+    // if (!isEqual(prevProps.nodes, nodes) || prevProps.disabled !== disabled) {
+    //   model.flattenNodes(nodes);
+    // }
+    model.flattenNodes(nodes);
 
     if (id !== null) {
       newState = { ...newState, id };
@@ -124,6 +126,7 @@ class CheckboxTree extends React.Component {
 
     if (this.isSomeChildChecked(node)) {
       // return 1; //2
+      console.log(2);
       return 2; //2
     }
 

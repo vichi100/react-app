@@ -19,8 +19,8 @@ const nodes = [
         value: "true x",
         checked: true,
         children: [
-          { label: "a", value: "a", checked: true },
-          { label: "b", value: "b", checked: true }
+          { label: "a", value: "a", checked: true, children: [] },
+          { label: "b", value: "b", checked: true, children: [] }
         ]
       }
       // { label: "big data b", value: "y", checked: true },

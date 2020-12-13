@@ -56,7 +56,8 @@ class NodeModel {
   }
 
   nodeHasChildren(node) {
-    return Array.isArray(node.children);
+    // return Array.isArray(node.children);
+    return node.children.length > 0;
   }
 
   deserializeLists(lists) {
