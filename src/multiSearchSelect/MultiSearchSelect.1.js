@@ -11,8 +11,7 @@ class MultiSearchSelect extends React.Component {
     this.state = {
       showOptions: false,
       selected: this.props.selected,
-      userInput: "",
-      isChecked: false
+      userInput: ""
     };
   }
   componentWillMount() {
@@ -31,11 +30,6 @@ class MultiSearchSelect extends React.Component {
       this.props.onUserInput(this.state.userInput);
     }
   }
-
-  handleChecked = event => {
-    console.log("vichi");
-    this.setState({ isChecked: !this.state.isChecked });
-  };
   show = e => {
     e.preventDefault();
     this.setState({
@@ -58,7 +52,7 @@ class MultiSearchSelect extends React.Component {
     });
   };
   addTag = element => {
-    // console.log("vichi");
+    console.log("vichi");
     let current = this.state.selected;
     if (this.state.selected.indexOf(element) === -1) {
       current.push(element);
@@ -131,6 +125,27 @@ class MultiSearchSelect extends React.Component {
                 className="input-box"
               />
             )}
+
+            {this.props.showTags && (
+              <div className="tag-container" contentEditable={false}>
+                {this.state.selected.map((e, i) => {
+                  return (
+                    <div className="tags" key={i}>
+                      {e}
+                      <div
+                        className="remove-tag"
+                        onClick={e => {
+                          e.preventDefault();
+                          this.removeTag(i);
+                        }}
+                      >
+                        | x
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           {true && this.props.options && (
@@ -141,27 +156,23 @@ class MultiSearchSelect extends React.Component {
               }}
             >
               {this.props.options.map((e, i) => {
-                {
-                  /* console.log("vichi", e); */
-                }
+                console.log("vichi", e);
                 if (
                   e.toLowerCase().indexOf(this.state.userInput.toLowerCase()) >
                   -1
                 ) {
                   return (
                     <div
-                      className={"option"}
+                      className={
+                        "option" +
+                        (this.state.selected.indexOf(e) > -1 ? " active" : "")
+                      }
                       key={i}
                       onClick={ev => {
                         ev.preventDefault();
                         this.addTag(e);
                       }}
                     >
-                      <input
-                        type="checkbox"
-                        name={e}
-                        checked={this.state.selected.indexOf(e) > -1}
-                      />
                       {e} <span style={{ float: "right" }}>&#10003;</span>
                     </div>
                   );

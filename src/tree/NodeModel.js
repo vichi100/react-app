@@ -48,7 +48,8 @@ class NodeModel {
         isParent,
         isLeaf: !isParent,
         checked: node.checked,
-        expanded: false,
+        display: node.display,
+        expanded: node.expanded,
         treeDepth: depth,
         index
       };

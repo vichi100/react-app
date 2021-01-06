@@ -26,7 +26,7 @@ export default class Demo extends React.Component {
     };
   }
   handleChange = arr => {
-    console.log(arr);
+    // console.log(arr);
   };
   render() {
     return (

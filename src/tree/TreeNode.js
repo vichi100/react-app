@@ -100,7 +100,7 @@ class TreeNode extends React.Component {
   }
 
   renderCheckboxLabel(children) {
-    const { checked, disabled, treeId, value, onClick } = this.props;
+    const { checked, display, disabled, treeId, value, onClick } = this.props;
     const clickable = onClick !== null;
     const inputId = `${treeId}-${String(value)
       .split(" ")
@@ -130,10 +130,10 @@ class TreeNode extends React.Component {
   }
 
   renderLabel() {
-    const { label } = this.props;
+    const { label, display } = this.props;
     const labelChildren = [<span>{label}</span>];
 
-    return this.renderCheckboxLabel(labelChildren);
+    return display ? this.renderCheckboxLabel(labelChildren) : null;
   }
 
   renderChildren() {

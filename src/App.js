@@ -6,7 +6,7 @@ import "../src/less/react-checkbox-tree.css";
 import { connect } from "react-redux";
 import { updateUser } from "./action/user-action";
 // import Demo from "./demo.6";
-import Demo from "./demo.11";
+import Demo from "./demo.10";
 import ReadFile from "./ReadFile";
 
 class App extends Component {

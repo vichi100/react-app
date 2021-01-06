@@ -13,14 +13,41 @@ const nodes = [
     label: "big data",
     value: "big data",
     checked: true,
+    display: true,
+    expanded: true,
     children: [
       {
         label: "data v ",
         value: "data v",
         checked: true,
+        display: true,
+        expanded: true,
         children: [
-          { label: "a", value: "a", checked: true, children: [] },
-          { label: "b", value: "b", checked: true, children: [] }
+          {
+            label: "data x ",
+            value: "data x",
+            checked: true,
+            display: true,
+            expanded: true,
+            children: [
+              {
+                label: "a",
+                value: "a",
+                checked: false,
+                display: true,
+                expanded: true,
+                children: []
+              },
+              {
+                label: "b",
+                value: "b",
+                checked: false,
+                display: true,
+                expanded: true,
+                children: []
+              }
+            ]
+          }
         ]
       }
       // { label: "big data b", value: "y", checked: true },
