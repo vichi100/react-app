@@ -55,11 +55,10 @@ class CheckboxTree extends React.Component {
 
     const model = new NodeModel(props);
     model.flattenNodes(props.nodes);
-    // model.deserializeLists({
-    //   checked: props.checked,
-    //   expanded: props.expanded
-    // });
-    model.deserializeLists(model.flatNodes);
+    model.deserializeLists({
+      checked: props.checked,
+      expanded: props.expanded
+    });
 
     this.state = {
       id: props.id || `rct-${uuid().toString()}`,
@@ -82,41 +81,37 @@ class CheckboxTree extends React.Component {
     // if (!isEqual(prevProps.nodes, nodes) || prevProps.disabled !== disabled) {
     //   model.flattenNodes(nodes);
     // }
-    if (Object.keys(model.flatNodes).length == 0) {
-      model.flattenNodes(nodes);
-    }
+
+    model.flattenNodes(nodes);
 
     if (id !== null) {
       newState = { ...newState, id };
     }
 
-    // model.deserializeLists({
-    //   checked: newProps.checked,
-    //   expanded: newProps.expanded
-    // });
+    model.deserializeLists({
+      checked: newProps.checked,
+      expanded: newProps.expanded
+    });
 
-    model.deserializeLists(model.flatNodes);
     return newState;
   };
 
   onCheck = nodeInfo => {
     const { checkModel, onCheck } = this.props;
-    // const model = this.state.model.clone();
-    const node = this.state.model.getNode(nodeInfo.value);
+    const model = this.state.model.clone();
+    const node = model.getNode(nodeInfo.value);
 
-    this.state.model.toggleChecked(nodeInfo, nodeInfo.checked, checkModel);
-    // onCheck(model.serializeList("checked"), { ...node, ...nodeInfo });
-    // onCheck(model.serializeList("checked"), { ...node, ...nodeInfo });
-    onCheck(this.state.model.flatNodes);
+    model.toggleChecked(nodeInfo, nodeInfo.checked, checkModel);
+    onCheck(model.serializeList("checked"), { ...node, ...nodeInfo });
   };
 
   onExpand = nodeInfo => {
     const { onExpand } = this.props;
-    // const model = this.state.model.clone();
-    const node = this.state.model.getNode(nodeInfo.value);
+    const model = this.state.model.clone();
+    const node = model.getNode(nodeInfo.value);
 
-    this.state.model.toggleNode(nodeInfo.value, "expanded", nodeInfo.expanded);
-    onExpand(this.state.model.flatNodes);
+    model.toggleNode(nodeInfo.value, "expanded", nodeInfo.expanded);
+    onExpand(model.serializeList("expanded"), { ...node, ...nodeInfo });
   };
 
   determineShallowCheckState = node => {
@@ -127,25 +122,14 @@ class CheckboxTree extends React.Component {
     }
 
     if (this.isEveryChildChecked(node)) {
-      flatNode.checked = true;
       return 1;
     }
 
     if (this.isSomeChildChecked(node)) {
-      flatNode.checked = true;
-      // return 1; //2
-      console.log(2);
-      return 1; //2
+      return 2;
     }
 
-    if (!flatNode.isLeaf) {
-      if (flatNode.checked) {
-        flatNode.checked = true;
-        return 1;
-      }
-    }
-
-    return flatNode.checked ? 1 : 0;
+    return 0;
   };
 
   isEveryChildChecked = node => {
@@ -181,7 +165,6 @@ class CheckboxTree extends React.Component {
         <TreeNode
           key={key}
           checked={flatNode.checkState}
-          display={flatNode.display}
           className={node.className}
           disabled={flatNode.disabled}
           expandOnClick={expandOnClick}

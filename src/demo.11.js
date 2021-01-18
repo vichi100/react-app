@@ -17,8 +17,8 @@ const nodes = [
     expanded: true,
     children: [
       {
-        label: "data v ",
-        value: "data v",
+        label: "data M ",
+        value: "data M",
         checked: true,
         display: true,
         expanded: true,
@@ -33,7 +33,7 @@ const nodes = [
               {
                 label: "a",
                 value: "a",
-                checked: false,
+                checked: true,
                 display: true,
                 expanded: true,
                 children: []
@@ -41,7 +41,7 @@ const nodes = [
               {
                 label: "b",
                 value: "b",
-                checked: false,
+                checked: true,
                 display: true,
                 expanded: true,
                 children: []
@@ -49,8 +49,8 @@ const nodes = [
             ]
           }
         ]
-      }
-      // { label: "big data b", value: "y", checked: true },
+      },
+      { label: "big data b", value: "big data b", checked: true, children: [] }
       // { label: "big data c", value: "c", checked: true },
       // { label: "big data d", value: "d", checked: true },
       // { label: "big data e", value: "e", checked: true },
@@ -88,7 +88,7 @@ export default class Demo extends React.Component {
       activeHoveredItems: [0],
       isAllSelected: false,
       subTitile: "",
-      checked: [],
+      checked: ["big data b"],
       expanded: [],
       filterText: "",
       nodesFiltered: nodes,
